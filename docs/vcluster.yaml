@@ -1,0 +1,24 @@
+privateNodes:
+  enabled: true
+  vpn:
+    enabled: true
+    nodeToNode:
+      enabled: true
+  autoNodes:
+    - provider: aws-ec2-node-provider
+      dynamic:
+        - name: node-pool-1
+          limits:
+            cpu: '8'
+      # these properties will be added as tags to the ec2 instance and the ebs volume
+      properties:
+        awsTagsJson: '{"cost-center":"1234","owner":"platform","env":"poc"}'
+        test: 'true'
+networking:
+  podCIDR: 10.64.0.0/16
+  serviceCIDR: 10.128.0.0/16
+controlPlane:
+  backingStore:
+    etcd:
+      embedded:
+        enabled: true
