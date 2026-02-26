@@ -62,7 +62,18 @@ resource "aws_instance" "this" {
 
   iam_instance_profile = local.instance_profile_name
 
-  tags = {
-    name = format("%s-worker-node", local.vcluster_name)
-  }
+  tags = merge(
+    {
+      Name = format("%s-worker-node", local.vcluster_name)
+    },
+    local.test_tag != null ? { test = tostring(local.test_tag) } : {}
+  )
+
+  # Recommended if SCP checks EBS volume tags too
+  volume_tags = merge(
+    {
+      Name = format("%s-worker-node", local.vcluster_name)
+    },
+    local.test_tag != null ? { test = tostring(local.test_tag) } : {}
+  )
 }
