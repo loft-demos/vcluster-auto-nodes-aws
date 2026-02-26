@@ -66,7 +66,7 @@ resource "aws_instance" "this" {
     {
       Name = format("%s-worker-node", local.vcluster_name)
     },
-    local.test_tag != null ? { test = tostring(local.test_tag) } : {}
+    local.derived_aws_tags
   )
 
   # Recommended if SCP checks EBS volume tags too
@@ -74,6 +74,6 @@ resource "aws_instance" "this" {
     {
       Name = format("%s-worker-node", local.vcluster_name)
     },
-    local.test_tag != null ? { test = tostring(local.test_tag) } : {}
+    local.derived_aws_tags
   )
 }
