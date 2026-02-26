@@ -7,18 +7,15 @@ spec:
     nodeEnvironmentTemplate:
       infrastructure:
         git:
-          repository: https://github.com/loft-sh/vcluster-auto-nodes-aws.git
-          tag: v0.1.0
+          repository: https://github.com/loft-demos/vcluster-auto-nodes-aws.git
           subPath: environment/infrastructure
       kubernetes:
         git:
-          repository: https://github.com/loft-sh/vcluster-auto-nodes-aws.git
-          tag: v0.1.0
+          repository: https://github.com/loft-demos/vcluster-auto-nodes-aws.git
           subPath: environment/kubernetes
     nodeTemplate:
       git:
-        repository: https://github.com/loft-sh/vcluster-auto-nodes-aws.git
-        tag: v0.1.0
+        repository: https://github.com/loft-demos/vcluster-auto-nodes-aws.git
         subPath: node
     nodeTypes:
     - name: t3.small
